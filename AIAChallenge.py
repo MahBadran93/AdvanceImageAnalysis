@@ -1,4 +1,23 @@
 import numpy as np
+#....................................
+# to run the code : 
+#     I created a class called ConvolutionOps
+#       you create an object of this class:
+#         startConv = ConvolutionOps()
+#       this class include (convolution1D) function with 3 parameters:
+#            (signal, kernel, paddingType), the paddingType can be "zeroPadding"
+#               or "Symmetric" to determine the type of padding 
+#        like: startConv.convolution1D(signal3,kernel4,"Symmetric"). 
+#       flipping the kernel will be done inside the function . 
+#     ..............................................................   
+#   for the 2D convolution, I created a function called (convolve2D), but 
+#   there is no option for padding, it has only two parameters (signal and kernel)   
+#   but before adding the 2D filter to the function you need to flip the kernal,
+#   So I created a function called (flipFilter) which has 1 parameter (kernel)
+#   this function only for the 2D convolution with 2D kernel.
+#   flip the function first : flippedKernel = startConv.flipFilter(kernel)  
+#   then call 2d conv function : startConv.convolve2D(signal,flippedKernel)
+
 
 # Create class to do the convolution process. 
 class ConvolutionOps:
@@ -138,7 +157,7 @@ print('........Test 1D convolution..............')
 #............. Testing Convolution 1D ......................
 
 signal3 = np.array([1,2,3,4])
-kernel4 = np.array([0,1,1])
+kernel4 = np.array([1,1,1])
 
 # Print the signal,Filter we are testing on, change in the values
 # to check my function compared with numpy function 
@@ -151,8 +170,9 @@ print('Convolved Signal 1D with sym padding, my function:', startConv.convolutio
 # call the conv 1D fucntion, kernel should be of odd size, 0 padding  
 print('Convolved Signal 1D with zero padding, my function:', startConv.convolution1D(signal3,kernel4,"zeroPadding"))
 
-
 # Test already built function from numpy to compare with my results for 1D convolution 
+# my function make the convolved signal the same size as the original 
+# but numpy function put the result with padded value, but the results are same
 print('convolved Signal using numpy function',np.convolve(signal3,kernel4))
 
     
