@@ -152,6 +152,7 @@ print('Convolved Signal 1D with sym padding, my function:', startConv.convolutio
 print('Convolved Signal 1D with zero padding, my function:', startConv.convolution1D(signal3,kernel4,"zeroPadding"))
 
 
+# Test already built function from numpy to compare with my results for 1D convolution 
 print('convolved Signal using numpy function',np.convolve(signal3,kernel4))
 
     
